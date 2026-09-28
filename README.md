@@ -1,4 +1,4 @@
-# AI Task Fallback Chain für Home Assistant
+﻿# AI Task Fallback Chain für Home Assistant
 
 Eine Custom Integration, die mehrere **AI-Task-Entitäten in Reihe schaltet**.
 Sie stellt eine eigene AI-Task-Entität bereit (z. B.
@@ -62,7 +62,7 @@ bezahlten Key.
 ## Installation über HACS
 
 1. HACS → oben rechts **⋮** → **Benutzerdefinierte Repositories**.
-2. Repository: `https://github.com/EmilyMoonstone/ha_ai_task_fallback_chain`,
+2. Repository: `https://github.com/EmilyMoonstone/ha_ai_fallback_chain`,
    Typ: **Integration** → Hinzufügen.
 3. In HACS nach **AI Task Fallback Chain** suchen → **Herunterladen**.
 4. Home Assistant **neu starten**.
