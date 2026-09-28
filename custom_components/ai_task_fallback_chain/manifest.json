@@ -1,0 +1,13 @@
+{
+  "domain": "ai_task_fallback_chain",
+  "name": "AI Task Fallback Chain",
+  "codeowners": ["@EmilyMoonstone"],
+  "config_flow": true,
+  "dependencies": ["ai_task", "conversation"],
+  "documentation": "https://github.com/EmilyMoonstone/ha_ai_task_fallback_chain",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/EmilyMoonstone/ha_ai_task_fallback_chain/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}

@@ -1,0 +1,89 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "AI Task Fallback Chain",
+        "description": "General settings. In the next steps you choose the AI Task entities (stages) in the order they should be tried.",
+        "data": {
+          "name": "Name",
+          "timeout": "Timeout per attempt",
+          "retries": "Retries on overload (5xx)",
+          "retry_delay": "Delay between retries",
+          "cooldown_error": "Pause after an error",
+          "cooldown_quota": "Pause after a quota / rate limit error (429)",
+          "daily_quota_until_reset": "Pause a daily quota until it resets"
+        },
+        "data_description": {
+          "timeout": "If a stage does not answer within this time, the next stage is used.",
+          "retries": "How often a stage is tried again right away when the model is overloaded or the server has a temporary problem (HTTP 500/502/503/504).",
+          "retry_delay": "Waiting time before a retry. It grows with every retry (1×, 2×, …).",
+          "cooldown_error": "How long a stage is skipped after a normal error. 0 = never skip.",
+          "cooldown_quota": "How long a stage is skipped when its quota is used up. 0 = never skip.",
+          "daily_quota_until_reset": "If the provider reports a quota per day (e.g. Gemini free tier), skip the stage until the quota resets at midnight Pacific time instead of the pause above."
+        }
+      },
+      "stage": {
+        "title": "Stage {number}",
+        "description": "Stages so far:\n{stages}\n\nChoose the AI Task entity for stage {number}.",
+        "data": {
+          "entity_id": "AI Task entity",
+          "add_another": "Add another stage"
+        }
+      }
+    },
+    "error": {
+      "duplicate_stage": "This entity is already a stage of this chain.",
+      "chain_as_stage": "A fallback chain cannot be a stage of a chain."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Edit fallback chain",
+        "description": "Current stages:\n{stages}",
+        "data": {
+          "timeout": "Timeout per attempt",
+          "retries": "Retries on overload (5xx)",
+          "retry_delay": "Delay between retries",
+          "cooldown_error": "Pause after an error",
+          "cooldown_quota": "Pause after a quota / rate limit error (429)",
+          "daily_quota_until_reset": "Pause a daily quota until it resets",
+          "redefine_stages": "Redefine stages"
+        },
+        "data_description": {
+          "timeout": "If a stage does not answer within this time, the next stage is used.",
+          "retries": "How often a stage is tried again right away when the model is overloaded or the server has a temporary problem (HTTP 500/502/503/504).",
+          "retry_delay": "Waiting time before a retry. It grows with every retry (1×, 2×, …).",
+          "cooldown_error": "How long a stage is skipped after a normal error. 0 = never skip.",
+          "cooldown_quota": "How long a stage is skipped when its quota is used up. 0 = never skip.",
+          "daily_quota_until_reset": "If the provider reports a quota per day (e.g. Gemini free tier), skip the stage until the quota resets at midnight Pacific time instead of the pause above.",
+          "redefine_stages": "Enable to change order or entities. The current stages are suggested."
+        }
+      },
+      "stage": {
+        "title": "Stage {number}",
+        "description": "New stages so far:\n{stages}\n\nChoose the AI Task entity for stage {number}.",
+        "data": {
+          "entity_id": "AI Task entity",
+          "add_another": "Add another stage"
+        }
+      }
+    },
+    "error": {
+      "duplicate_stage": "This entity is already a stage of this chain.",
+      "chain_as_stage": "A fallback chain cannot be a stage of a chain."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "last_stage": {
+        "name": "Last used AI service"
+      }
+    },
+    "button": {
+      "reset_cooldowns": {
+        "name": "Reset pauses"
+      }
+    }
+  }
+}

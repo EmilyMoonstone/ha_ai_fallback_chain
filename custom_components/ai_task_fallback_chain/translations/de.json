@@ -1,0 +1,89 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "AI Task Fallback-Kette",
+        "description": "Allgemeine Einstellungen. In den nächsten Schritten wählst du die AI-Task-Entitäten (Stufen) in der Reihenfolge, in der sie versucht werden sollen.",
+        "data": {
+          "name": "Name",
+          "timeout": "Timeout pro Versuch",
+          "retries": "Wiederholungen bei Überlastung (5xx)",
+          "retry_delay": "Wartezeit zwischen Wiederholungen",
+          "cooldown_error": "Pause nach Fehler",
+          "cooldown_quota": "Pause nach Kontingent-/Rate-Limit-Fehler (429)",
+          "daily_quota_until_reset": "Tageskontingent bis zum Reset pausieren"
+        },
+        "data_description": {
+          "timeout": "Antwortet eine Stufe nicht innerhalb dieser Zeit, geht es mit der nächsten weiter.",
+          "retries": "Wie oft eine Stufe sofort erneut versucht wird, wenn das Modell überlastet ist oder der Server ein vorübergehendes Problem hat (HTTP 500/502/503/504).",
+          "retry_delay": "Wartezeit vor einer Wiederholung. Sie wächst mit jeder Wiederholung (1×, 2×, …).",
+          "cooldown_error": "So lange wird eine Stufe nach einem normalen Fehler übersprungen. 0 = nie überspringen.",
+          "cooldown_quota": "So lange wird eine Stufe übersprungen, wenn ihr Kontingent aufgebraucht ist. 0 = nie überspringen.",
+          "daily_quota_until_reset": "Meldet der Anbieter ein Kontingent pro Tag (z. B. Gemini Free Tier), wird die Stufe statt der Pause oben bis zum Reset übersprungen (Mitternacht Pacific Time, bei uns 9 Uhr)."
+        }
+      },
+      "stage": {
+        "title": "Stufe {number}",
+        "description": "Bisherige Stufen:\n{stages}\n\nWähle die AI-Task-Entität für Stufe {number}.",
+        "data": {
+          "entity_id": "AI-Task-Entität",
+          "add_another": "Weitere Stufe hinzufügen"
+        }
+      }
+    },
+    "error": {
+      "duplicate_stage": "Diese Entität ist bereits eine Stufe dieser Kette.",
+      "chain_as_stage": "Eine Fallback-Kette kann nicht selbst Stufe einer Kette sein."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Fallback-Kette bearbeiten",
+        "description": "Aktuelle Stufen:\n{stages}",
+        "data": {
+          "timeout": "Timeout pro Versuch",
+          "retries": "Wiederholungen bei Überlastung (5xx)",
+          "retry_delay": "Wartezeit zwischen Wiederholungen",
+          "cooldown_error": "Pause nach Fehler",
+          "cooldown_quota": "Pause nach Kontingent-/Rate-Limit-Fehler (429)",
+          "daily_quota_until_reset": "Tageskontingent bis zum Reset pausieren",
+          "redefine_stages": "Stufen neu festlegen"
+        },
+        "data_description": {
+          "timeout": "Antwortet eine Stufe nicht innerhalb dieser Zeit, geht es mit der nächsten weiter.",
+          "retries": "Wie oft eine Stufe sofort erneut versucht wird, wenn das Modell überlastet ist oder der Server ein vorübergehendes Problem hat (HTTP 500/502/503/504).",
+          "retry_delay": "Wartezeit vor einer Wiederholung. Sie wächst mit jeder Wiederholung (1×, 2×, …).",
+          "cooldown_error": "So lange wird eine Stufe nach einem normalen Fehler übersprungen. 0 = nie überspringen.",
+          "cooldown_quota": "So lange wird eine Stufe übersprungen, wenn ihr Kontingent aufgebraucht ist. 0 = nie überspringen.",
+          "daily_quota_until_reset": "Meldet der Anbieter ein Kontingent pro Tag (z. B. Gemini Free Tier), wird die Stufe statt der Pause oben bis zum Reset übersprungen (Mitternacht Pacific Time, bei uns 9 Uhr).",
+          "redefine_stages": "Aktivieren, um Reihenfolge oder Entitäten zu ändern. Die bisherigen Stufen werden als Vorschlag übernommen."
+        }
+      },
+      "stage": {
+        "title": "Stufe {number}",
+        "description": "Neue Stufen bisher:\n{stages}\n\nWähle die AI-Task-Entität für Stufe {number}.",
+        "data": {
+          "entity_id": "AI-Task-Entität",
+          "add_another": "Weitere Stufe hinzufügen"
+        }
+      }
+    },
+    "error": {
+      "duplicate_stage": "Diese Entität ist bereits eine Stufe dieser Kette.",
+      "chain_as_stage": "Eine Fallback-Kette kann nicht selbst Stufe einer Kette sein."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "last_stage": {
+        "name": "Zuletzt genutzter AI-Dienst"
+      }
+    },
+    "button": {
+      "reset_cooldowns": {
+        "name": "Pausen zurücksetzen"
+      }
+    }
+  }
+}
